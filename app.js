@@ -1,6 +1,6 @@
 
 
-const loadPhone = async (name) => {
+const loadPhone = async (name,isShowAll) => {
     //clear phone container before adding
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.innerHTML = '';
@@ -9,26 +9,35 @@ const loadPhone = async (name) => {
     const data = await res.json();
     const phones = data.data;
     
-    displayPhones(phones);
+    displayPhones(phones,isShowAll);
 }
 
 
-const displayPhones = async (phones) => {
+const displayPhones = async (phones,isShowAll) => {
       //adding total result on h1 tag
     const h1 = document.getElementById('total-result');
     h1.classList.add('p-4', 'm-4');
     
     h1.innerText = `total result: ${phones.length}`;
     //showing only 12 phones
-    let lessPhone = phones.slice(0,12);
+    
     const phoneContainer = document.getElementById('phone-container');
     //show all button show by condition
     const showAllBtn = document.getElementById('show-all');
-    if(phones.length > 12){
+    if(phones.length > 12 && !isShowAll){
         showAllBtn.classList.remove('hidden');
+    }else{
+        showAllBtn.classList.add('hidden');
     }
     
-    lessPhone.forEach(phone => {
+    // display only first 12 phones if not show all
+    if(!isShowAll){
+        phones = phones.slice(0,12);
+    }else{
+        showAllBtn.classList.add('hidden')
+    }
+
+    phones.forEach(phone => {
         
         const div = document.createElement('div');
        
@@ -54,10 +63,10 @@ const displayPhones = async (phones) => {
 }
 
 // handle search button
-const handleSearch = () =>{
+const handleSearch = (isShowAll) =>{
     toggleLoadingSpinner(true);
     const inputName = document.getElementById('input-box');
-    loadPhone(inputName.value);
+    loadPhone(inputName.value,isShowAll);
 }
 
 //loading spinner
@@ -71,6 +80,11 @@ const toggleLoadingSpinner = (isLoading) =>{
     
     
 
+}
+
+//handle show All
+const handleShowAll = ()=>{
+    handleSearch(true);
 }
 
 
