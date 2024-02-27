@@ -2,13 +2,13 @@
 
 const loadPhone = async (name) => {
     //clear phone container before adding
-
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.innerHTML = '';
+    //loading data from api
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${name}`);
     const data = await res.json();
     const phones = data.data;
-
+    
     displayPhones(phones);
 }
 
@@ -27,6 +27,7 @@ const displayPhones = async (phones) => {
     if(phones.length > 12){
         showAllBtn.classList.remove('hidden');
     }
+    
     lessPhone.forEach(phone => {
         
         const div = document.createElement('div');
@@ -47,12 +48,29 @@ const displayPhones = async (phones) => {
         phoneContainer.appendChild(div);
     });
 
+//         hide loading spinner
+  toggleLoadingSpinner(false);
+
 }
 
 // handle search button
 const handleSearch = () =>{
+    toggleLoadingSpinner(true);
     const inputName = document.getElementById('input-box');
     loadPhone(inputName.value);
+}
+
+//loading spinner
+const toggleLoadingSpinner = (isLoading) =>{
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if(isLoading){
+        loadingSpinner.classList.remove('hidden');
+    }else{
+        loadingSpinner.classList.add('hidden');
+    }
+    
+    
+
 }
 
 
