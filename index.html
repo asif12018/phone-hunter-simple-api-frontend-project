@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone hunter</title>
+
+    <!--=== tailwind and daisy ui cdn ====-->
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!---- custom css link ---->
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+
+<body>
+    <!--====== header start from here =====-->
+    <header>
+
+    </header>
+    <!----==== main start from here ====---->
+    <main>
+        <!--== search input ==-->
+        <section class="md:container md:mx-auto bg-gray-100 p-4 m-4">
+            <div>
+                <input id="input-box" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                <button onclick="handleSearch()" class="btn btn-primary">Search</button>
+            </div>
+        </section>
+        <!--=====  search result  =====--->
+      <section class="md:container md:mx-auto">
+         <div id="phone-container" class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- <div class="card max-w-96bg-base-100 shadow-xl col-span-1 mx-auto justify-evenly ">
+                <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                <div class="card-body">
+                  <h2 class="card-title">Shoes!</h2>
+                  <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Buy Now</button>
+                  </div>
+                </div>
+              </div> -->
+         </div>
+      </section>
+    </main>
+    <!--==== footer start from here ====-->
+    <footer>
+
+    </footer>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
