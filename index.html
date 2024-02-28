@@ -25,27 +25,47 @@
         <!--== search input ==-->
         <section class="md:container md:mx-auto bg-gray-100 p-4 m-4">
             <div>
-                <input id="input-box" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                <input id="input-box" type="text" placeholder="Type here"
+                    class="input input-bordered w-full max-w-xs" />
                 <button onclick="handleSearch()" class="btn btn-primary">Search</button>
             </div>
         </section>
         <section class="md:container md:mx-auto bg-gray-100 ">
-        <h1 id="total-result" class="text-5xl font-bold text-black"></h1>
+            <h1 id="total-result" class="text-5xl font-bold text-black"></h1>
         </section>
         <!--==== spinner ===-->
         <section id="loading-spinner" class="flex justify-center my-40 hidden">
             <span class="loading loading-spinner text-purple-800 loading-lg"></span>
         </section>
         <!--=====  search result  =====--->
-      <section class="md:container md:mx-auto">
-         <div id="phone-container" class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-           <!--=== show all ===-->
-           
-         </div>
-         <div onclick="handleShowAll()" id="show-all" class="flex justify-center hidden">
-            <button class="btn btn-accent">Show All</button>
-           </div>
-      </section>
+        <section class="md:container md:mx-auto">
+            <div id="phone-container" class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!--=== show all ===-->
+
+            </div>
+            <div onclick="handleShowAll()" id="show-all" class="flex justify-center hidden">
+                <button class="btn btn-accent">Show All</button>
+            </div>
+        </section>
+        <!--- show details modal --->
+        <section id="show-details" class="container mx-auto">
+            
+            
+            <!-- <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <h3 class="font-bold text-lg">Hello!</h3>
+                    <p class="py-4">Press ESC key or click the button below to close</p>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog> -->
+
+
+        </section>
     </main>
     <!--==== footer start from here ====-->
     <footer>
