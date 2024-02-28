@@ -5,12 +5,18 @@ const loadPhone = async (name = '13', isShowAll) => {
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.innerHTML = '';
     //loading data from api
-    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${name}`);
-    const data = await res.json();
-    const phones = data.data;
-
-    displayPhones(phones, isShowAll);
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${name}`);
+        const data = await res.json();
+        const phones = data.data;
+        displayPhones(phones, isShowAll);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
+
+
 loadPhone();
 
 const displayPhones = async (phones, isShowAll) => {
@@ -35,6 +41,14 @@ const displayPhones = async (phones, isShowAll) => {
         phones = phones.slice(0, 12);
     } else {
         showAllBtn.classList.add('hidden')
+    }
+    //if no result found
+    if (phones.length === 0) {
+        const phoneContainer = document.getElementById('phone-container');
+        const h1 = document.createElement('h1');
+        h1.classList.add('text-4xl', 'text-center','font-bold');
+        h1.innerText = 'No result found';
+        phoneContainer.appendChild(h1);
     }
 
     phones.forEach(phone => {
@@ -99,10 +113,10 @@ const handleShowDetail = async (id) => {
 // show details function
 
 const showPhoneDetails = (phone) => {
-    
+
     const showDetails = document.getElementById('show-details');
     const div = document.createElement('div');
-    
+
     div.innerHTML = `
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle ">
     <div class="modal-box">
